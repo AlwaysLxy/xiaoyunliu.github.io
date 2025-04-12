@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-with-toggle">
+            <h1>Xiaoyun Liu</h1>
+            <button id="theme-toggle-btn" title="Toggle theme">
+                  <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="biography.html">Biography</a></li>
+                <li>
+                      <a href="works.html">Works</a>  <!-- 能点击跳转 -->
+                      <ul>
+                            <li><a href="daydream.html">Daydream</a></li>
+                            <li><a href="flowing.html">Flowing</a></li>
+                            <li><a href="memories-of-summertime.html">Memories of Summertime</a></li>
+                            <li><a href="home.html">Home</a></li>
+                            <li><a href="the-round-hat.html">The Round Hat</a></li>
+                      </ul>
+                </li>
+
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="content">
+            <div class="text-content">
+                <h2>Welcome to My Art Portfolio</h2>
+                <p>Trees are the earth's verses whispered to the sky, their roots etching stories into soil, while art is the soul's silent letter to eternity.</p>
+                <p>树木是大地向天空低语的诗句，根系在泥土中刻下故事，而艺术是灵魂写给永恒的信。——赫尔曼·黑塞《悉达多》</p>
+                <br>
+                <p>Explore my artistic journey and works.</p>
+            </div>
+            <div class="image-content">
+                <img src="fountain.jpg" alt="Artwork" />
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Xiaoyun Liu. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      const toggleBtn = document.getElementById("theme-toggle-btn");
+      const themeIcon = document.getElementById("theme-icon");
+      const userPref = localStorage.getItem("theme");
+
+      // 初始化主题
+      if (userPref === "dark") {
+        document.body.classList.add("dark-mode");
+        themeIcon.textContent = "☀️";
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+        themeIcon.textContent = isDark ? "☀️" : "🌙";
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+    </script>
+</body>
+</html>

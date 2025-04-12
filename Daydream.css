@@ -1,0 +1,430 @@
+/* 通用基础样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* ====== 导航栏样式 ====== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-bottom: 2px solid #eee;
+}
+
+header .logo h1 {
+  font-family: 'Times New Roman', serif;
+  color: #2f4f4f;
+  font-size: 36px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  position: relative; /* 必须有相对定位才能让下拉菜单相对于此 li 显示 */
+  margin-left: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #6a5acd;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 鼠标悬停时 Works 显示下拉菜单 */
+nav ul li:hover > ul {
+  display: block;
+}
+
+/* 下拉菜单样式 */
+nav ul li ul {
+  display: none; /* 默认隐藏 */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  width: 200px;
+}
+
+nav ul li ul li {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+nav ul li ul li a {
+  color: #483d8b;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+nav ul li ul li a:hover {
+  color: #6a5acd;
+}
+
+nav ul li a:hover {
+  color: #483d8b;
+}
+
+/* 内容区布局 */
+main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.text-content {
+  flex: 1;
+  margin-right: 50px;
+}
+
+.text-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.text-content p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.image-content {
+  flex: 1;
+}
+
+.image-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ====== 九宫格图片部分 ====== */
+#biography-content {
+  padding: 60px 50px;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.work-item img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.work-item p {
+  font-size: 16px;
+  margin-top: 15px;
+  color: #333;
+  font-style: italic;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 桌面默认三列 */
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 平板端：2列 */
+@media screen and (max-width: 991px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 手机端：1列 */
+@media screen and (max-width: 767px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.grid-item {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.grid-item img:hover {
+  transform: scale(1.03);
+}
+
+.grid-item p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
+  font-style: italic;
+}
+
+.art-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4a77c9;
+  font-style: italic;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+/* 页脚样式 */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-top: 2px solid #eee;
+}
+
+/* 恢复 footer 字体为正常 sans-serif */
+footer p {
+  font-size: 14px;
+  color: #777;
+  font-family: 'Arial', sans-serif;
+}
+
+.poetic-caption {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.sail-title {
+  font-family: 'Sail', cursive;
+  font-size: 28px;   /* ← 变小了 */
+  color: #0c3c4c;
+  margin-bottom: 10px;
+}
+
+.subtitle-cn {
+  font-size: 18px;
+  color: #0c3c4c;
+  font-family: 'Arial', sans-serif;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 12px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-content h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.modal-content p {
+  font-size: 16px;
+  color: #555;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 默认亮色主题样式 */
+body {
+  background-color: #fff;
+  color: #111;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* 切换按钮样式 */
+/* 让 logo 和切换按钮横向排列 */
+.logo-with-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 按钮和文字之间的间距 */
+}
+
+#theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #fbbf24; /* 默认亮色为黄色图标 */
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Daydream 页面手机端样式优化 */
+@media (max-width: 767px) {
+  /* ✅ 导航栏样式 */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .logo-with-toggle h1 {
+    font-size: 22px;
+  }
+
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  nav ul li {
+    margin-left: 0;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  /* ✅ Daydream 介绍内容优化 */
+  .content {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+  }
+
+  .text-content {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .text-content h2 {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+
+  .art-description {
+    font-size: 17px;
+    line-height: 1.8;
+    font-style: italic;
+    color: #3c67c5;
+  }
+
+  /* ✅ 图片部分单列展示 */
+  .gallery-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .gallery-grid .grid-item {
+    width: 90%;
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* ✅ 模态窗口适配 */
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  /* ✅ 底部诗意句式居中适配 */
+  .poetic-caption {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .sail-title {
+    font-size: 24px;
+  }
+
+  .subtitle-cn {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+  }
+}

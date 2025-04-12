@@ -1,0 +1,221 @@
+/* 页面淡入动画 */
+body {
+  animation: fadeIn 1s ease-in-out;
+  background-image: url('floral-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  padding: 0;
+  color: #111;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 导航栏样式 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 2px solid #eee;
+  animation: slideFadeDown 1.2s ease-out;
+}
+
+@keyframes slideFadeDown {
+  0% { opacity: 0; transform: translateY(-30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.logo h1 {
+  font-family: 'Times New Roman', serif;
+  color: #2f4f4f;
+  font-size: 32px;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  position: relative;
+  margin-left: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #6a5acd;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #483d8b;
+}
+
+/* 下拉菜单 */
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  width: 200px;
+  z-index: 999;
+  flex-direction: column;
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+nav ul li ul li {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+nav ul li ul li a {
+  color: #483d8b;
+  font-weight: normal;
+}
+
+nav ul li ul li a:hover {
+  color: #6a5acd;
+}
+
+/* 联系方式主体 */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 80px 20px 60px;
+  text-align: center;
+  line-height: 2.2;
+  max-width: 600px;
+  margin: 80px auto;
+  animation: fadeInUp 1.2s ease-out;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 联系项 */
+.contact-item {
+  margin-bottom: 40px;
+}
+
+.contact-item i {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #0d0d26;
+  transition: transform 0.3s ease;
+}
+
+.contact-item i:hover {
+  transform: scale(1.2);
+}
+
+.contact-item p {
+  font-size: 20px;
+  color: #222;
+  font-family: 'Playfair Display', serif;
+}
+
+/* 联系信息滑入动画 */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  color: #666;
+}
+
+/* 默认亮色主题样式 */
+body {
+  background-color: #fff;
+  color: #111;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* 切换按钮样式 */
+/* 让 logo 和切换按钮横向排列 */
+.logo-with-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 按钮和文字之间的间距 */
+}
+
+#theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #fbbf24; /* 默认亮色为黄色图标 */
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle-btn:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 767px) {
+  /* Header纵向排列，左边Logo，右边菜单 */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  /* Logo缩小 */
+  .logo-with-toggle h1,
+  .logo h1 {
+    font-size: 22px;
+  }
+
+  /* 菜单横向排列，靠右对齐 */
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  nav ul li {
+    margin-left: 0;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  /* 暗色模式按钮对齐调整 */
+  #theme-toggle-btn {
+    align-self: flex-start;
+    margin-left: auto;
+  }
+}

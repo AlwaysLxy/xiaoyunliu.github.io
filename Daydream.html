@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daydream - Art Portfolio</title>
+    <link rel="stylesheet" href="Daydream.css">
+</head>
+<body>
+    <header>
+        <div class="logo-with-toggle">
+            <h1>Xiaoyun Liu</h1>
+            <button id="theme-toggle-btn" title="Toggle theme">
+                  <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="biography.html">Biography</a></li>
+                <li>
+                    <a href="works.html">Works</a>
+                    <ul>
+                        <li><a href="daydream.html">Daydream</a></li>
+                        <li><a href="flowing.html">Flowing</a></li>
+                        <li><a href="memories-of-summertime.html">Memories of Summertime</a></li>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="the-round-hat.html">The Round Hat</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+  <section class="content">
+    <div class="text-content">
+      <h2>Daydream</h2>
+      <p class="art-description">
+        A soft blue hush drifts across the canvas—<br>
+        like light breathing through water,<br>
+        Daydream floats between memory and mist,<br>
+        where silence glows, and colors whisper.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="grid-item">
+        <img src="daydream1.jpg" alt="Whisper" class="popup-img"
+             data-title="Silent Descent (2025)"
+             data-size="37.5×26cm"
+             data-description="Where silence breathes beneath the blue." />
+      </div>
+      <div class="grid-item">
+        <img src="daydream2.jpg" alt="Forest Flight" class="popup-img"
+             data-title="Through the Whispering Woods"
+             data-size="13×9.3cm"
+             data-description="Between shadows and wings, she wanders." />
+      </div>
+      <div class="grid-item">
+        <img src="daydream3.jpg" alt="Moonlight River" class="popup-img"
+             data-title="Letter to the Moon"
+             data-size="20×15cm"
+             data-description="Dreams drift where the stars meet the tide." />
+      </div>
+      <div class="grid-item">
+        <img src="daydream4.jpg" alt="Evening Canoe" class="popup-img"
+             data-title="Under the Indigo Silence"
+             data-size="25×20cm"
+             data-description="Time stopped on the edge of the sea." />
+      </div>
+      <div class="grid-item">
+        <img src="daydream5.jpg" alt="Blue Ridge" class="popup-img"
+             data-title="Blue Ridge"
+             data-size="30×20cm"
+             data-description="Mountains dream beneath indigo skies." />
+      </div>
+      <div class="grid-item">
+        <img src="daydream6.jpg" alt="Winter Walk" class="popup-img"
+             data-title="Winter Walk"
+             data-size="20×20cm"
+             data-description="Snowbound night with silent stars." />
+      </div>
+      <div class="grid-item">
+        <img src="daydream7.jpg" alt="Cherry Dusk" class="popup-img"
+             data-title="Cherry Dusk"
+             data-size="21×14.8cm"
+             data-description="Soft pink and peace in a distant land." />
+      </div>
+      <div class="grid-item">
+        <img src="daydream8.jpg" alt="Pastoral Field" class="popup-img"
+             data-title="Pastoral Field"
+             data-size="30×20cm"
+             data-description="Dreams scattered under crescent and lake." />
+      </div>
+      <div class="grid-item">
+        <img src="daydream9.jpg" alt="Horse and Hill" class="popup-img"
+             data-title="Horse and Hill"
+             data-size="24×18cm"
+             data-description="A white horse in velvet night." />
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 诗意标题 -->
+<div class="poetic-caption">
+    <h2 class="sail-title">How many summers do we have left?</h2>
+    <p class="subtitle-cn">我们还有几个夏天？</p>
+</div>
+
+<!-- 模态弹窗 -->
+<div id="imageModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalSize"></p>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Xiaoyun Liu. All Rights Reserved.</p>
+</footer>
+
+<!-- 弹窗脚本 -->
+  <script>
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSize = document.getElementById("modalSize");
+    const modalDesc = document.getElementById("modalDesc");
+    const closeBtn = document.querySelector(".close-btn");
+
+    document.querySelectorAll(".popup-img").forEach(img => {
+      img.addEventListener("click", function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        modalTitle.textContent = this.dataset.title;
+        modalSize.textContent = this.dataset.size;
+        modalDesc.textContent = this.dataset.description;
+      });
+    });
+
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+  </script>
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle-btn");
+    const themeIcon = document.getElementById("theme-icon");
+    const userPref = localStorage.getItem("theme");
+
+    // 初始化主题
+    if (userPref === "dark") {
+      document.body.classList.add("dark-mode");
+      themeIcon.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      themeIcon.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  </script>
+</body>
+</html>

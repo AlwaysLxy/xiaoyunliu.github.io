@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-bottom: 2px solid #eee;
+}
+
+header .logo h1 {
+  font-family: 'Times New Roman', serif;
+  color: #2f4f4f;
+  font-size: 36px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  position: relative; /* 必须有相对定位才能让下拉菜单相对于此 li 显示 */
+  margin-left: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #6a5acd;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 鼠标悬停时 Works 显示下拉菜单 */
+nav ul li:hover > ul {
+  display: block;
+}
+
+/* 下拉菜单样式 */
+nav ul li ul {
+  display: none; /* 默认隐藏 */
+  position: absolute;
+  top: 100%; /* 下拉菜单出现在 li 元素的下方 */
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  width: 200px;
+}
+
+nav ul li ul li {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+nav ul li ul li a {
+  color: #483d8b;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+nav ul li ul li a:hover {
+  color: #6a5acd;
+}
+
+/* 导航栏其他样式 */
+nav ul li a:hover {
+  color: #483d8b;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.text-content {
+  flex: 1;
+  margin-right: 50px;
+}
+
+.text-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.text-content p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.image-content {
+  flex: 1;
+}
+
+.image-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-top: 2px solid #eee;
+}
+
+footer p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* 默认亮色主题样式 */
+body {
+  background-color: #fff;
+  color: #111;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* 切换按钮样式 */
+/* 让 logo 和切换按钮横向排列 */
+.logo-with-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 按钮和文字之间的间距 */
+}
+
+#theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #fbbf24; /* 默认亮色为黄色图标 */
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle-btn:hover {
+  transform: scale(1.2);
+}
+
+/* 手机端专用样式 */
+@media (max-width: 767px) {
+  /* Header 整体布局 */
+  header {
+    flex-wrap: wrap;
+    padding: 16px 20px;
+  }
+
+  /* Logo + 切换图标 */
+  .logo-with-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-with-toggle h1 {
+    font-size: 20px;
+  }
+
+  #theme-toggle-btn {
+    font-size: 20px;
+  }
+
+  /* 导航菜单横向展示靠右 */
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  nav ul li {
+    margin: 0;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  /* 内容部分样式调整 */
+  main {
+    padding: 30px 20px;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text-content h2 {
+    font-size: 26px;
+  }
+
+  .text-content p {
+    font-size: 16px;
+  }
+
+  .text-content {
+    flex: 0.8;
+    margin-right: 0;
+    margin: 10px 0;
+  }
+
+  .image-content {
+    flex: 1.2;
+    margin: 10px 0;
+  }
+
+  .image-content img {
+    max-width: 100%;
+    height: auto;
+  }
+}

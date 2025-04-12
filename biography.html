@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biography</title>
+  <link rel="stylesheet" href="biography.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 背景与动画容器 -->
+  <div class="animated-background"></div>
+  <div class="petal-container"></div>
+
+  <!-- 页面主内容 -->
+  <div class="main-content">
+    <header>
+      <div class="logo-with-toggle">
+        <h1>Xiaoyun Liu</h1>
+        <button id="theme-toggle-btn" title="Toggle theme">
+              <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="biography.html">Biography</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="biography-content">
+      <div class="section">
+        <h2>Introduction</h2>
+        <div class="content-container">
+          <p>Hello, I’m Xiaoyun Liu, currently an undergraduate student in Information Management and Information Systems at Xi'an University of Electronic Science and Technology, class of 2022. Although my academic focus is on information technology, art has always been an essential part of my life since childhood.</p>
+          <img src="biography1.jpg" alt="Artwork" class="art-image" />
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Education</h2>
+        <ul>
+          <li>University of the Arts London, Camberwell College of Art, MA: Painting (09/2024 - 12/2025)</li>
+          <li>Central Academy of Fine Arts (CAFA), Bachelor of Fine Arts (09/2020 - 07/2024)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>My Works</h2>
+        <p>My works focus on fleeting moments that we might not notice when we are immersed in them in everyday life until we lose and depart from them...</p>
+      </div>
+
+      <div class="section">
+        <h2>Artistic Background</h2>
+        <p>I use light and colour to create dreamy and fluid worlds that express the feelings, emotions, memories, and infinite reveries of space and time we experience and imagine through those moments.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 飘落效果脚本 -->
+  <script>
+    const container = document.querySelector('.petal-container');
+    const images = ['bubbles.png'];
+    function createFloater() {
+      const floater = document.createElement('div');
+      floater.classList.add('floater');
+      floater.style.left = Math.random() * 100 + 'vw';
+      floater.style.animationDuration = (5 + Math.random() * 5) + 's';
+      floater.style.animationDelay = Math.random() * 3 + 's';
+      floater.style.backgroundImage = `url(${images[Math.floor(Math.random() * images.length)]})`;
+      container.appendChild(floater);
+      setTimeout(() => floater.remove(), 10000);
+    }
+    setInterval(createFloater, 600);
+  </script>
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle-btn");
+    const themeIcon = document.getElementById("theme-icon");
+    const userPref = localStorage.getItem("theme");
+
+    // 初始化主题
+    if (userPref === "dark") {
+      document.body.classList.add("dark-mode");
+      themeIcon.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      themeIcon.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  </script>
+</body>
+</html>

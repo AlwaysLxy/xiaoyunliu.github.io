@@ -1,0 +1,229 @@
+/* 页面淡入动画 */
+body {
+  animation: fadeIn 1s ease-in-out;
+  font-family: 'Playfair Display', serif;
+  background-color: #fff;
+  color: #111;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 导航栏样式 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #fff;
+  border-bottom: 2px solid #eee;
+  z-index: 10;
+}
+
+.logo h1 {
+  font-family: 'Times New Roman', serif;
+  color: #2f4f4f;
+  font-size: 32px;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  position: relative;
+  margin-left: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #6a5acd;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #483d8b;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  list-style: none;
+  width: 200px;
+  z-index: 100;
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+nav ul li ul li {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+nav ul li ul li a {
+  color: #483d8b;
+  font-weight: normal;
+}
+
+nav ul li ul li a:hover {
+  color: #6a5acd;
+}
+
+/* 作品内容部分样式 */
+.works-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px 60px;
+  padding: 60px 80px;
+  justify-items: center;
+}
+
+
+
+.work-preview {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.work-preview img {
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.work-preview img:hover {
+  transform: scale(1.03);
+}
+
+.work-preview a {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #1a3b5d;
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  margin-top: 80px;
+}
+
+footer p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* 默认亮色主题样式 */
+body {
+  background-color: #fff;
+  color: #111;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* 切换按钮样式 */
+/* 让 logo 和切换按钮横向排列 */
+.logo-with-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 按钮和文字之间的间距 */
+}
+
+#theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #fbbf24; /* 默认亮色为黄色图标 */
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle-btn:hover {
+  transform: scale(1.2);
+}
+
+
+/* 响应式布局 */
+/* 平板端（768px - 991px）显示两列 */
+@media screen and (max-width: 991px) {
+  .works-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 40px 40px;
+  }
+}
+
+/* 手机端（小于等于767px）显示一列 */
+@media screen and (max-width: 767px) {
+  .works-container {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+  }
+
+  .work-preview img {
+    width: 90%;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Header纵向排列，左边Logo，右边菜单 */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  /* Logo缩小 */
+  .logo-with-toggle h1,
+  .logo h1 {
+    font-size: 22px;
+  }
+
+  /* 菜单横向排列，靠右对齐 */
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  nav ul li {
+    margin-left: 0;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  /* 暗色模式按钮对齐调整 */
+  #theme-toggle-btn {
+    align-self: flex-start;
+    margin-left: auto;
+  }
+}
+
